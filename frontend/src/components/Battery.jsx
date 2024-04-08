@@ -1,8 +1,11 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
+import { Line } from "react-chartjs-2";
+
+import revenueData from "../batteryCharge.json";
 
 const Battery = () => {
-  return (
+  return (<>
     <Box>
          <Typography  variant="h6" sx={{color:"#ffffff", marginY:"30px"}}><span style={{color:"#12B347"}}>Charging</span> (45 minutes untill fully charge)</Typography>
     
@@ -12,7 +15,7 @@ const Battery = () => {
 
       <Box sx={{ width: "40%" ,display:"flex", justifyContent:'center'  }}>
         <img
-          src="src/assets/battery.png"
+          src="./battery.png"
           alt="Image"
           style={{ width: "100%", height: "auto" }}
         />
@@ -54,7 +57,40 @@ const Battery = () => {
         </Stack>
       </Box>
     </Box>
+    
     </Box>
+    <br /><br />
+
+    <Stack bgcolor={"#fff"} padding={"40px"} color={"#000000"} textAlign={"center"} borderRadius={"10px"} height={"300px"}>
+          <Typography variant="h6">Last 12 Hour Battery Percentage</Typography>
+          <Line  color="#fff"  width={"900%"}
+          data={{
+            labels: revenueData.map((data) => data.label),
+            datasets: [
+              {
+                label: "BATTERY PERSANTAGE %",
+                data: revenueData.map((data) => data.revenue),
+                backgroundColor: "#064FF0",
+                borderColor: "#064FF0",
+              }
+            ],
+          }}
+          options={{
+            elements: {
+              line: {
+                tension: 0.5,
+              },
+            },
+            plugins: {
+              title: {
+                text: "Monthly Revenue & Cost",
+              },
+            },
+          }}
+        />
+  
+        </Stack>
+    </>
   );
 };
 

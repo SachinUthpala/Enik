@@ -23,7 +23,7 @@ export const useRegister = () => {
 
     if (password === confirmPassword) {
       try {
-        const response = await fetch("http://localhost:4000/api/inverters/register",
+        const response = await fetch("https://enik.onrender.com/api/inverters/register",
           {
             method: "POST",
             headers: {

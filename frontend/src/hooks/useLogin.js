@@ -19,7 +19,7 @@ export const useLogin = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:4000/api/inverters/login", {
+      const response = await fetch("https://enik.onrender.com/api/inverters/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,6 +28,7 @@ export const useLogin = () => {
       });
 
       const data = await response.json();
+      navigate("./addenergy");
 
       if (response.ok) {
         // Save user data in local storage
@@ -35,7 +36,7 @@ export const useLogin = () => {
         dispatch({ type: "LOGIN", payload: data });
 
         // Redirect to home page after successful login
-        navigate("/addenergy");
+        navigate("./addenergy");
       } else {
         setError("Error logging in. Please try again.");
       }

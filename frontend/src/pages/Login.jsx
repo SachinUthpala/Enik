@@ -24,10 +24,11 @@ import { useLogin } from "../hooks/useLogin";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login, error, isLoading } = useLogin();
+  const { login } = useLogin();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    localStorage.setItem("user", JSON.stringify(username));
 
     await login(username, password);
   };
@@ -217,7 +218,7 @@ const Login = () => {
           }}
         >
           <img
-            src="src/assets/loginImage.png"
+            src="./loginImage.png"
             alt="Image"
             style={{ width: "100%", maxHeight: "100%" }}
           />

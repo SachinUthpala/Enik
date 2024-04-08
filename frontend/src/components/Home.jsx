@@ -10,7 +10,7 @@ const Home = () => {
     
           <Box sx={{ width: "40%" ,display:"flex", justifyContent:'center',alignItems:"center"  }}>
             <img
-              src="src/assets/home.png"
+              src="./home.png"
               alt="Image"
               style={{ width: "100%", height: "auto" }}
             />

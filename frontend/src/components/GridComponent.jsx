@@ -10,7 +10,7 @@ const Grid = () => {
     
           <Box sx={{ width: "40%" ,display:"flex", justifyContent:'center',alignItems:"center"  }}>
             <img
-              src="src/assets/grid.png"
+              src="./grid.png"
               alt="Image"
               style={{ width: "100%", height: "auto" }}
             />

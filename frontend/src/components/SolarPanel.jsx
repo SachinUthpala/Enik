@@ -1,12 +1,15 @@
 import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
+import { Line } from "react-chartjs-2";
+
+import revenueData from "../solarOut.json";
 
 const SolarPanel = () => {
   return (
-    <Box sx={{ display: "flex"}}>
+    <><Box sx={{ display: "flex"}}>
       <Box sx={{ width: "40%", display: "flex", justifyContent: "center",alignItems:"center" }}>
         <img
-          src="src/assets/solar.png"
+          src="./solar.png"
           alt="Image"
           style={{ width: "100%", height: "auto" }}
         />
@@ -40,6 +43,37 @@ const SolarPanel = () => {
         </Stack>
       </Box>
     </Box>
+    <Stack bgcolor={"#fff"} padding={"40px"} color={"#000000"} textAlign={"center"} borderRadius={"10px"} height={"300px"}>
+          <Typography variant="h6">Last 12 Hour Solar Output Percentage</Typography>
+          <Line  color="#fff"  width={"900%"}
+          data={{
+            labels: revenueData.map((data) => data.label),
+            datasets: [
+              {
+                label: "SOLAR OUTPUT PERSANTAGE %",
+                data: revenueData.map((data) => data.revenue),
+                backgroundColor: "#58f714",
+                borderColor: "#58f714",
+              }
+            ],
+          }}
+          options={{
+            elements: {
+              line: {
+                tension: 0.5,
+              },
+            },
+            plugins: {
+              title: {
+                text: "Monthly Revenue & Cost",
+              },
+            },
+          }}
+        />
+  
+        </Stack>
+    
+    </>
   );
 };
 

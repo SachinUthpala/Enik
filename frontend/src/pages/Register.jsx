@@ -49,7 +49,7 @@ const Register = () => {
         }}
       >
         <img
-            src="src/assets/logo.png"
+            src="./logo.png"
             alt="Image"
             style={{  height: "80%", width: "auto" }}
           />
